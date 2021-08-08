@@ -3,6 +3,7 @@ import Lottie from 'react-lottie';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import * as animationData from './../utils/deliveryMan.json';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     home_div: {
@@ -54,7 +55,7 @@ const Home = () => {
               isPaused={false}/>
 
 <Button className={classes.find_jobs} variant="contained" color="primary">
-        Lets find jobs
+        <Link to="/findJobs" >Lets find jobs</Link>
       </Button>
     </div> );
 }
