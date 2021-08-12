@@ -3,6 +3,8 @@ import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './components/home';
 import Findjobs from './components/findJobs';
+import AdminLogin from './components/adminLogin';
+import AdminDasboard from './components/adminDasboard';
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
       <Router>
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/findJobs" component ={Findjobs}></Route>
+        <Route exact path="/adminLogin" component={AdminLogin}></Route>
+        <Route exact path ='/admin/dasboard' component={AdminDasboard}></Route>
       </Router>
     </div>
   );
