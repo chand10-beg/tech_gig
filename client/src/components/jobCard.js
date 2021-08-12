@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
 
     jobCard:{
-        width:"350px",
+        width:"47%",
         padding:'.9rem',
         boxSizing:"border-box",
         margin:'0.5rem'
