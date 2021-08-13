@@ -5,6 +5,7 @@ import Home from './components/home';
 import Findjobs from './components/findJobs';
 import AdminLogin from './components/adminLogin';
 import AdminDasboard from './components/adminDasboard';
+import Job from './components/job';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/findJobs" component ={Findjobs}></Route>
         <Route exact path="/adminLogin" component={AdminLogin}></Route>
         <Route exact path ='/admin/dasboard' component={AdminDasboard}></Route>
+        <Route exact path="/findJobs/:jobId" component={Job}></Route>
       </Router>
     </div>
   );

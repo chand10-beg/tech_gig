@@ -56,7 +56,7 @@ const JobCard = () => {
 <div className={classes.jobInfo}>
 <img src={icon}  width="40" height ="40" alt="icon" ></img>
 <div className={classes.jobName}>
-    <strong>Non biker Delivery Executive</strong>
+    <strong> <Link to="/findJobs/xyz">Non biker Delivery Executive</Link></strong>
     <p>Flipkart, DL road, Ahmedabad</p>
 </div>
 </div>
