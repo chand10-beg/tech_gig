@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'center',
     },
     girl:{
-        width:'70%',
+        width:'70%' ,
     },
     heading: {
         fontSize: '1.1rem',
