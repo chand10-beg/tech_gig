@@ -4,6 +4,10 @@ import Paper from '@material-ui/core/Paper';
 import icon from './../utils/delivery-man.png';
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+import Application from './application';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -45,11 +49,34 @@ justifyContent:'space-between',
     fontSize:'.9rem'
     
 }
-    }
+    },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin:'auto',
+      },
+      paper: {
+        backgroundColor: theme.palette.background.paper,
+        border: '.5px solid #000',
+        borderRadius:'5px',
+        width:'65%',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2),
+      },
   }));
 
 const JobCard = () => {
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+
+    const handleOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
 
     return (  <Paper elevation={3} className={classes.jobCard} >
 
@@ -65,11 +92,29 @@ const JobCard = () => {
 <p>
     Earning : <strong>120 Rs/hour</strong>
 </p>
-<Button className={classes.apply} variant="contained" color="primary">
-        <Link to="/findJobs" >Apply now</Link>
+<Button className={classes.apply} variant="contained" color="primary" onClick={handleOpen}>
+        Apply now
       </Button>
 </div>
 
+<Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+<Application></Application>
+          </div>
+        </Fade>
+</Modal>
 
     </Paper> );
 }

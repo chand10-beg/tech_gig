@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useState} from 'react';
+import Loader from "react-loader-spinner";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Girl from './../utils/deliveryGirl.svg';
@@ -11,6 +12,10 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
+    cover:{
+    width:'100%',
+    textAlign:'center'
+    },
     root: {
       flexGrow: 1,
       textAlign:'center',
@@ -30,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'center',
     },
     girl:{
-        width:'70%' ,
+        width:'70%',
     },
     heading: {
         fontSize: '1.1rem',
@@ -84,87 +89,105 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor:"yellow",
         },
     },
+    loader:{
+        margin:'15rem auto'
+    },
   }));
 
 
 const Job = () => {
     const classes = useStyles();  
+    const [loader, setLoader] =useState(false); 
     const [expanded, setExpanded] = React.useState('panel1');
     const handleChange = (panel) => (event, isExpanded) => {
       setExpanded(isExpanded ? panel : false);
 
     };
-    return (<div className={classes.root}>
-        <h1>Non biker Delivery Executive</h1>
-        <p><strong>Flipkart</strong>, DL road, Ahmedabad</p>
-        <Grid container spacing={0}>
-        <Grid item xs={12} sm ={6} className={classes.paper}>
-            <img src ={Girl} className={classes.girl} alt="girl"></img>
-            <div className={classes.highlight}> 
-                <div className={classes.box}>
-                    <strong>Driving License</strong>
-                    <p>required</p>
-                </div>
-                <div className={classes.box}>
-                <strong>Aadhar Card</strong>
-                    <p>required</p>
-                </div>
-                <div className={classes.box}>
-                <strong>Gender</strong>
-                    <p>female</p>
-                </div>
-                <div className={classes.box}>
-                <strong>Two-wheeler</strong>
-                    <p>required</p>
-                </div>
-            </div>
-        </Grid>
-        <Grid item xs={12} sm ={6} className={classes.paper}>
-        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} className={classes.aCard}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1bh-content"
-          id="panel1bh-header"
-        >
-          <Typography className={classes.heading}>Job Description</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-          <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Company, <strong>Flipkart</strong></p></div>
-              <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Adress, <strong>DL, road Ahmedabad</strong></p></div>
-              <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p><strong>Morning </strong>shift, <strong>10:00 AM - 1:00 PM</strong></p></div>
-              <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Deliver products to customer</p></div>
-              <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Collects payments and ensure timely delivery</p></div>
-          
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} className={classes.aCard}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2bh-content"
-          id="panel2bh-header"
-        >
-          <Typography className={classes.heading}>Key Features</Typography>
-
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-              <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Daily earning, <strong>120 Rs/hour</strong></p></div>
-              <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Flexible, <strong>working hours</strong></p></div>
-              <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p><strong>paid</strong> training</p></div>
-              <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>T-shirts and gadgets</p></div>
-              <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Zero onboarding fee</p></div>
-          
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Button className={classes.apply} variant="contained" color="primary">
-        Apply now
-      </Button>
-        </Grid>
-      </Grid>
-    </div>  );
+    return (
+    <div className={classes.cover}>{
+        loader?(               
+             <div>
+            <Loader
+            className={classes.loader}
+             type='Oval'
+             color="#FF4F5B"
+             height={80}
+             width={80}
+           />
+           </div>):(
+                   <div className={classes.root}>
+                   <h1>Non biker Delivery Executive</h1>
+                   <p><strong>Flipkart</strong>, DL road, Ahmedabad</p>
+                   <Grid container spacing={0}>
+                   <Grid item xs={12} sm ={6} className={classes.paper}>
+                       <img src ={Girl} className={classes.girl} alt="girl"></img>
+                       <div className={classes.highlight}> 
+                           <div className={classes.box}>
+                               <strong>Driving License</strong>
+                               <p>required</p>
+                           </div>
+                           <div className={classes.box}>
+                           <strong>Aadhar Card</strong>
+                               <p>required</p>
+                           </div>
+                           <div className={classes.box}>
+                           <strong>Gender</strong>
+                               <p>female</p>
+                           </div>
+                           <div className={classes.box}>
+                           <strong>Two-wheeler</strong>
+                               <p>required</p>
+                           </div>
+                       </div>
+                   </Grid>
+                   <Grid item xs={12} sm ={6} className={classes.paper}>
+                   <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} className={classes.aCard}>
+                   <AccordionSummary
+                     expandIcon={<ExpandMoreIcon />}
+                     aria-controls="panel1bh-content"
+                     id="panel1bh-header"
+                   >
+                     <Typography className={classes.heading}>Job Description</Typography>
+                   </AccordionSummary>
+                   <AccordionDetails>
+                     <Typography>
+                     <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Company, <strong>Flipkart</strong></p></div>
+                         <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Adress, <strong>DL, road Ahmedabad</strong></p></div>
+                         <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p><strong>Morning </strong>shift, <strong>10:00 AM - 1:00 PM</strong></p></div>
+                         <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Deliver products to customer</p></div>
+                         <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Collects payments and ensure timely delivery</p></div>
+                     
+                     </Typography>
+                   </AccordionDetails>
+                 </Accordion>
+                 <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} className={classes.aCard}>
+                   <AccordionSummary
+                     expandIcon={<ExpandMoreIcon />}
+                     aria-controls="panel2bh-content"
+                     id="panel2bh-header"
+                   >
+                     <Typography className={classes.heading}>Key Features</Typography>
+           
+                   </AccordionSummary>
+                   <AccordionDetails>
+                     <Typography>
+                         <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Daily earning, <strong>120 Rs/hour</strong></p></div>
+                         <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Flexible, <strong>working hours</strong></p></div>
+                         <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p><strong>paid</strong> training</p></div>
+                         <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>T-shirts and gadgets</p></div>
+                         <div className={classes.listItem}><FiberManualRecordIcon></FiberManualRecordIcon><p>Zero onboarding fee</p></div>
+                     
+                     </Typography>
+                   </AccordionDetails>
+                 </Accordion>
+                 <Button className={classes.apply} variant="contained" color="primary">
+                   Apply now
+                 </Button>
+                   </Grid>
+                 </Grid>
+               </div> 
+           )}
+        </div> );
 }
  
 export default Job;
